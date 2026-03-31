@@ -3,69 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahfuz Rana</title>
+    <title>মাহফুজ রানা | পোর্টফোলিও</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            --bg-color: #0f172a; 
+            --card-bg: #1e293b; 
+            --text-main: #f1f5f9; 
+            --text-muted: #94a3b8; 
+            --accent: #38bdf8; 
+            --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f99;
+            font-family: 'Hind Siliguri', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
+            padding: 20px;
         }
-        .card {
-            background: white;
-            padding: 30px;
+
+        .portfolio-card {
+            background-color: var(--card-bg);
+            max-width: 450px;
+            width: 100%;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .image-container {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 25px;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            padding: 5px;
+            background-color: var(--card-bg);
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .title {
+            color: var(--accent);
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .info-box {
+            background-color: rgba(15, 23, 42, 0.5);
             border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            text-align: center;
-            width: 350px;
-        }
-        h1 { color: #333; margin-bottom: 5px; }
-        p { color: #666; margin: 5px 0; }
-        .links {
-            margin-top: 20px;
+            padding: 20px;
+            margin-bottom: 30px;
+            font-size: 14px;
+            color: var(--text-muted);
             text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            line-height: 1.6;
         }
-        .btn {
+
+        .info-box p {
+            margin-bottom: 10px;
+        }
+
+        .info-box strong {
+            color: var(--text-main);
             display: block;
-            padding: 10px;
-            margin: 10px 0;
-            text-decoration: none;
-            border-radius: 8px;
-            color: white;
-            font-weight: bold;
-            transition: 0.3s;
-            text-align: center;
+            margin-bottom: 2px;
         }
-        .facebook { background-color: #1877F2; }
-        .whatsapp { background-color: #25D366; }
-        .gmail { background-color: #DB4437; }
-        .imo { background-color: #00A1FF; }
-        .call { background-color: #555; }
-        
-        .btn:hover { opacity: 0.8; transform: scale(1.02); }
+
+        /* বাটন গ্রিড আপডেট করা হয়েছে ৩টি কলামের জন্য */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .link-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text-main);
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .link-item:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+        }
+
+        /* বাটন কালার */
+        .call { background: rgba(56, 189, 248, 0.1); color: #38bdf8; }
+        .whatsapp { background: rgba(34, 197, 94, 0.1); color: #22c55e; }
+        .facebook { background: rgba(24, 119, 242, 0.1); color: #1877f2; }
+        .mail { background: rgba(231, 76, 60, 0.1); color: #e74c3c; }
+        .telegram { background: rgba(0, 136, 204, 0.1); color: #0088cc; }
+        .imo { background: rgba(43, 115, 232, 0.1); color: #2b73e8; }
+
+        @media (max-width: 480px) {
+            .links-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
-<div class="card">
-    <h1>Mahfuz Rana</h1>
-    <img src="photo.jpg" alt="my photo🖼️ " style="width: 200px; border-radius: 10px;">
-    <p><strong>ঠিকানা:</strong>গ্রামঃ  বাজিতপুর (ইনায়েত বিশাসপাড়া)     উপজেলাঃ    শিবগঞ্জ,  জেলাঃ  চাঁপাইনবাবগঞ্জ।</p>
-    <p>শিক্ষার্থী, মসজিদ মিশন একাডেমি</p>
+<div class="portfolio-card">
+    <div class="image-container">
+        <img src="photo.jpg" alt="মাহফুজ রানা" class="profile-img">
+    </div>
+    
+    <h1>মাহফুজ রানা</h1>
+    <p class="title">শিক্ষার্থী, মসজিদ মিশন একাডেমি</p>
 
-    <div class="links">
-        <a href="tel:+8801799264290" class="btn call">📞 কল করুন</a>
+    <div class="info-box">
+        <p><strong>স্থায়ী ঠিকানা:</strong> গ্রামঃ বাজিতপুর (ইনায়েত বিশাসপাড়া), উপজেলাঃ শিবগঞ্জ, জেলাঃ চাঁপাইনবাবগঞ্জ।</p>
+        <p><strong>বর্তমান ঠিকানা:</strong> রাজশাহী।</p>
+    </div>
 
-        <a href="https://wa.me/8801799264298" class="btn whatsapp">💬 WhatsApp</a>
-
-
- <a href="https://www.facebook.com/share/1BM9QbkLbU/" target="_blank" class="btn facebook">💬facebook</a>
-
-        <a href="mailto:mahfuzrana117@gmail.com" class="btn gmail">📧 Google Mail</a>
-         </div>
+    <div class="links-grid">
+        <a href="tel:+8801799264290" class="link-item call">📞 কল করুন</a>
+        <a href="https://wa.me/8801799264298" class="link-item whatsapp">💬 WhatsApp</a>
+        <a href="https://t.me/+8801799264290" class="link-item telegram">✈️ Telegram</a>
+        <a href="imo:+8801799264290" class="link-item imo">📱 IMO</a>
+        <a href="https://www.facebook.com/share/1BM9QbkLbU/" class="link-item facebook">👤 Facebook</a>
+        <a href="mailto:mahfuzrana117@gmail.com" class="link-item mail">📧 Email</a>
+    </div>
 </div>
 
 </body>
