@@ -1,31 +1,26 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahfuz | পোর্টফোলিও</title>
+    <title>Mahfuz | Digital Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --bg-color: #0f172a; 
-            --card-bg: #1e293b; 
-            --text-main: #f1f5f9; 
-            --text-muted: #94a3b8; 
-            --accent: #38bdf8; 
-            --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+            --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --accent-color: #22d3ee;
+            --bg-dark: #0f172a;
+            --card-glass: rgba(30, 41, 59, 0.7);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Hind Siliguri', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            background: radial-gradient(circle at top left, #1e293b, #0f172a);
+            color: #f1f5f9;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -33,132 +28,126 @@
             padding: 20px;
         }
 
-        .portfolio-card {
-            background-color: var(--card-bg);
-            max-width: 450px;
-            width: 100%;
-            border-radius: 24px;
-            padding: 40px;
-            box-shadow: var(--shadow);
+        /* Welcome Toast Style */
+        #welcome-toast {
+            visibility: hidden;
+            min-width: 280px;
+            background-color: var(--accent-color);
+            color: #0f172a;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .image-container {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 25px;
-        }
-
-        .profile-img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            /* নিচের এই লাইনটি মাথা ঠিকমতো দেখানোর জন্য যোগ করা হয়েছে */
-            object-position: top; 
-            border: 4px solid var(--accent);
-            padding: 5px;
-            background-color: var(--card-bg);
-        }
-
-        h1 {
-            font-size: 28px;
+            border-radius: 12px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
             font-weight: 700;
-            margin-bottom: 5px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            font-family: 'Hind Siliguri', sans-serif;
         }
 
-        .title {
-            color: var(--accent);
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 20px;
+        #welcome-toast.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
         }
 
-        .info-box {
-            background-color: rgba(15, 23, 42, 0.5);
-            border-radius: 15px;
+        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+
+        /* Portfolio Card Styles */
+        .portfolio-card {
+            background: var(--card-glass);
+            backdrop-filter: blur(15px);
+            max-width: 420px;
+            width: 100%;
+            border-radius: 30px;
+            padding: 40px 30px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .image-container { position: relative; width: 130px; height: 130px; margin: 0 auto 20px; }
+        .profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid transparent; background: linear-gradient(var(--card-glass), var(--card-glass)) padding-box, var(--primary-gradient) border-box; padding: 5px; }
+
+        h1 { font-size: 26px; margin-bottom: 5px; }
+        .title { color: var(--accent-color); font-size: 15px; margin-bottom: 25px; }
+
+        .section-box {
+            background: rgba(15, 23, 42, 0.4);
+            border-radius: 20px;
             padding: 20px;
-            margin-bottom: 30px;
-            font-size: 14px;
-            color: var(--text-muted);
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
             text-align: left;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            line-height: 1.6;
         }
 
-        .info-box p {
-            margin-bottom: 10px;
-        }
+        .section-title { font-size: 12px; text-transform: uppercase; color: #94a3b8; margin-bottom: 15px; text-align: center; letter-spacing: 1px; }
 
-        .info-box strong {
-            color: var(--text-main);
-            display: block;
-            margin-bottom: 2px;
-        }
-
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
+        .links-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
 
         .link-item {
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 8px;
             text-decoration: none;
-            color: var(--text-main);
-            padding: 12px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 13px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
         }
 
-        .link-item:hover {
-            transform: translateY(-3px);
-            border-color: var(--accent);
-        }
-
-        .call { background: rgba(56, 189, 248, 0.1); color: #38bdf8; }
-        .whatsapp { background: rgba(34, 197, 94, 0.1); color: #22c55e; }
-        .facebook { background: rgba(24, 119, 242, 0.1); color: #1877f2; }
-        .mail { background: rgba(231, 76, 60, 0.1); color: #e74c3c; }
-        .telegram { background: rgba(0, 136, 204, 0.1); color: #0088cc; }
-        .imo { background: rgba(43, 115, 232, 0.1); color: #2b73e8; }
-
-        @media (max-width: 480px) {
-            .links-grid { grid-template-columns: 1fr; }
-        }
+        .link-item:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--accent-color); }
+        .info-item { display: flex; align-items: flex-start; gap: 12px; }
+        .info-item i { color: var(--accent-color); margin-top: 4px; }
     </style>
 </head>
 <body>
 
-<div class="portfolio-card">
-    <div class="image-container">
-        <img src="IMG_20260331_195455.jpg" alt="Mahfuz Rana" class="profile-img">
-    </div>
-    
-    <h1>Md Mahfuz Rana</h1>
-    <p class="title">Student: Masjid Mission Academy (School & College)</p>
+    <div id="welcome-toast">ধন্যবাদ, আমার এই ওয়েবসাইট-এ আপনাকে স্বাগতম!</div>
 
-    <div class="info-box">
-        <p><strong>বর্তমান ঠিকানা:</strong> বোয়ালিয়া,রাজশাহী।</p>
-        <p><strong>স্থায়ী ঠিকানা:</strong> গ্রামঃ বাজিতপুর (ইনায়েত বিশ্বাসপাড়া),ডাকঘরঃ কানসাট, উপজেলাঃ শিবগঞ্জ, জেলাঃ চাঁপাইনবাবগঞ্জ।</p>
+    <div class="portfolio-card">
+        <div class="image-container">
+            <img src="IMG_20260331_195455.jpg" alt="Md Mahfuz Rana" class="profile-img">
+        </div>
         
+        <h1>Md Mahfuz Rana</h1>
+        <p class="title">developer and Student, Masjid Mission Academy</p>
+
+        <div class="section-box">
+            <div class="info-item">
+                <i class="fas fa-home"></i>
+                <div>
+                    <small style="color:#94a3b8">Current Address</small>
+                    <p>Rajshahi, Bangladesh.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <p class="section-title">Connect With Me</p>
+            <div class="links-grid">
+                <a href="tel:+8801799264290" class="link-item"><i class="fas fa-phone-alt"></i> Call</a>
+                <a href="https://wa.me/8801799264290" class="link-item"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="https://www.instagram.com/mahfuzur_rahman_mahfuz_?igsh=dWQyd3llNXNqcnIw" class="link-item"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://www.threads.net/@mahfuzur_rahman_mahfuz_" class="link-item"><i class="fab fa-threads"></i> Threads</a>
+                <a href="https://t.me/+8801799264290" class="link-item"><i class="fab fa-telegram-plane"></i> Telegram</a>
+                <a href="https://www.facebook.com/share/1BM9QbkLbU/" class="link-item"><i class="fab fa-facebook-f"></i> Facebook</a>
+            </div>
+        </div>
     </div>
 
-    <div class="links-grid">
-        <a href="tel:+8801799264290" class="link-item call">📞 কল করুন</a>
-        <a href="https://wa.me/8801799264290" class="link-item whatsapp">💬 WhatsApp</a>
-        <a href="https://t.me/+8801799264290" class="link-item telegram">✈️ Telegram</a>
-        <a href="imo:+8801799264290" class="link-item imo">📱 IMO</a>
-        <a href="https://www.facebook.com/share/1BM9QbkLbU/" class="link-item facebook">👤 Facebook</a>
-        <a href="mailto:mahfuzrana117@gmail.com" class="link-item mail">📧 Email</a>
-    </div>
-</div>
-
+    <script>
+        window.onload = function() {
+            var x = document.getElementById("welcome-toast");
+            x.className = "show";
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+        };
+    </script>
 </body>
 </html>
